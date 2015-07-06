@@ -1,0 +1,14 @@
+<div ng-app="chatApp" ng-controller="ChatCtrl">
+  <h1>{{ title }}</h1>
+  <a ng-repeat="chatRoom in chatRooms" href="#" class='room-link'>{{ chatRoom }}</a><a href="#" ng-click="addRoom()">+</a>
+  <div class="chat-container">
+    <p ng-repeat="msg in chatList | orderBy:predicate:reverse | limitTo: 15">
+      <span class="{{ msg.cls }}">{{ msg.user }}</span> - <span class="chat-message">{{ msg.message }}</span>
+    </p>
+  </div>
+  <form novalidate>
+    <label for="chatUser">User Name:</label><input name="chatUser" ng-model="chatUser" />
+    <label for="message">Message:</label><input name="message" ng-model="message" />
+    <button ng-click="sendMessage()">Send</button>
+  </form>
+</div>
